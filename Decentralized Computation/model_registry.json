@@ -1,0 +1,17 @@
+{
+    "random_forest": {
+        "balance": 920,
+        "total_predictions": 4,
+        "correct_predictions": 2
+    },
+    "gradient_boosting": {
+        "balance": 1000,
+        "total_predictions": 0,
+        "correct_predictions": 0
+    },
+    "logistic_regression": {
+        "balance": 1000,
+        "total_predictions": 0,
+        "correct_predictions": 0
+    }
+}
