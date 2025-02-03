@@ -1,5 +1,6 @@
 import os
 import json
+import random
 
 class ModelRegistry:
     def __init__(self, initial_balance=1000):
@@ -15,10 +16,12 @@ class ModelRegistry:
     def register_model(self, model_name, initial_deposit=1000):
         with open(self.models_db_path, 'r+') as f:
             models = json.load(f)
+            total_pred = random.randint(10,100)
+            correct_pred = random.randint(0, total_pred)
             models[model_name] = {
                 'balance': initial_deposit,
-                'total_predictions': 0,
-                'correct_predictions': 0
+                'total_predictions': total_pred,
+                'correct_predictions': correct_pred
             }
             f.seek(0)
             json.dump(models, f, indent=4)

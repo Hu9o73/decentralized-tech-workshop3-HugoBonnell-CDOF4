@@ -44,6 +44,9 @@ In a real distributed system, multiple computers would independently train and s
 4. **ConsensusMechanism**
    - Aggregates predictions
    - Calculates model weights
+      - Originally, they are randomly set.
+      - This is done by simulating previous predictions.
+      - It lets us see a difference between the weights and later track its dynamic update mechanism ! 
    - Determines consensus prediction
 
 ## Testing the System
@@ -64,7 +67,7 @@ In a real distributed system, multiple computers would independently train and s
    This will:
    - Train models
    - Show individual predictions
-   - Demonstrate consensus mechanism
+   - Demonstrate consensus mechanism and show initial weights
    - Start Flask API server
 
 2. **API Prediction Testing**
@@ -81,7 +84,7 @@ In a real distributed system, multiple computers would independently train and s
    - Check `model_registry.json` to see how model "balances" change
    - Track how poorly performing models get penalized
    - Note: As all models perform well on this dataset, we simulate model's failure.
-      - No matter the output, when making a POST request for a give model, it has 30% chance to be considered a failure.
+      - No matter the output, when making a POST request for a give model, it has **30% chance to be considered a failure.**
       - This is to let you see how balances can change !
 
 ## Key Simulation Techniques
