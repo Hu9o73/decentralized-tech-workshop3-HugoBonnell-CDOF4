@@ -1,0 +1,45 @@
+<div class="container">
+  <h2>Orders</h2>
+  <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#createOrderModal">Create Order</button>
+  <div class="list-group">
+    <div class="list-group-item" *ngFor="let order of orders">
+      <h5>Order ID: {{ order.id }}</h5>
+      <p>Total Price: ${{ order.totalPrice }}</p>
+      <p>Status: {{ order.status }}</p>
+      <div *ngFor="let item of order.products">
+        <p>Product ID: {{ item.productId }}, Quantity: {{ item.quantity }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Create Order Modal -->
+<div class="modal fade" id="createOrderModal" tabindex="-1" aria-labelledby="createOrderModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createOrderModalLabel">Create Order</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="createOrder(orderForm)" #orderForm="ngForm">
+          <div class="form-group">
+            <label for="userId">User ID</label>
+            <input type="number" class="form-control" id="userId" ngModel name="userId" required>
+          </div>
+          <div class="form-group" *ngFor="let product of orderProducts; let i = index">
+            <label for="productId">Product ID</label>
+            <input type="number" class="form-control" id="productId" [(ngModel)]="product.productId" name="productId-{{i}}" required>
+            <label for="quantity">Quantity</label>
+            <input type="number" class="form-control" id="quantity" [(ngModel)]="product.quantity" name="quantity-{{i}}" required>
+            <button type="button" class="btn btn-danger mt-2" (click)="removeProduct(i)">Remove</button>
+          </div>
+          <button type="button" class="btn btn-secondary mt-2" (click)="addProduct()">Add Product</button>
+          <button type="submit" class="btn btn-primary mt-2">Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
