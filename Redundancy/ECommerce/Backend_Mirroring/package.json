@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Backend for the ECOMMERCE website",
+  "description": "Backend for the ECOMMERCE website, with mirroring",
   "main": "src/index.ts",
   "scripts": {
     "start": "npx ts-node src/index.ts",
