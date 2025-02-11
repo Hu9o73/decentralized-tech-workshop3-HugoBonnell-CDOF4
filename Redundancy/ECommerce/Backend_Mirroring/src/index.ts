@@ -35,7 +35,7 @@ const swaggerOptions = {
 };
 
 // Heath check endpoint
-app.use('/health', healthCheckRouter);
+app.use(healthCheckRouter);
 
 // Use the endpoints defined
 app.use(endpoints);
@@ -49,7 +49,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 testDatabaseConnection(sequelize);
 
 // Start server
-sequelize.sync().then(() => {
+sequelize.sync({ force: true }).then(() => {
   app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
   });
